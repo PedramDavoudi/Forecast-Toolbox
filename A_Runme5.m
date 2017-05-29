@@ -5,7 +5,7 @@
 % Base on Karami and Bayat
 % Modified By P.Davoudi: Pedram.Davoudi@gmail.com
 % What's new
-% User could just choose single equation method 
+% User could just choose single equation method
 % Choose Both Iran or comodities
 
 clear
@@ -15,7 +15,7 @@ JustAr=0; % Just Single equation methods.
 %****************************
 onestep=NaN; % Idont know it
 OneStep=nan; % Idont know it
-horizon=4; % Forecast Horizon
+horizon=4;	 % Forecast Horizon
 if Irann==1
     isPersianDate=1;
     % %---------------------Read Data from Excell file---------------------------
@@ -26,7 +26,7 @@ if Irann==1
     %the first row is the transformations
     FRT=1;
     %%
-elseif Irann==2
+elseif Irann==2 % CPI Elements
     isPersianDate=1;
     Data=dataset('xls','Input\Data.xlsx','sheet','mainGroup');
     Target_var_names={'G1','G2','G3','G4','G5','G6','G7','G8','G9','G10','G11','G12'};
@@ -36,7 +36,7 @@ elseif Irann==2
     nd=20; % Periods to find the best models
     %the first row is the transformations
     FRT=1;
-else % Commodities
+elseif  Irann==3% Commodities
     isPersianDate=0;
     % %---------------------Read Data from Excell file---------------------------
     Data=dataset('xls','Input\Mar.xlsx');%,'sheet','Data');
@@ -45,6 +45,34 @@ else % Commodities
     nd=10; % Periods to find the best models
     %the first row is the transformations
     FRT=1;
+elseif  Irann==4% Wednesday Report
+    isPersianDate=1;
+    % %---------------------Read Data from Excell file---------------------------
+   Data=dataset('xls','Input\Data.xlsx','sheet','WEdn');
+    Target_var_names={'WTI' 'Coal' 'Copper' 'Gold' 'Energy' 'Steel' 'nonEnergy' 'Commoditiy' 'SI'};% 'oil' 'Al' 'Co' 'Or'};
+    Dum_var_name={};%{'D1','D2'}; periodical=Data.Date(1); % 4 for quarterly data and 12 for monthly and 1 for anual
+    nd=20; % Periods to find the best models
+    %the first row is the transformations
+    FRT=1;
+elseif Irann==5 % Exchange Rate Reports
+    isPersianDate=1;
+    % %---------------------Read Data from Excell file---------------------------
+    Data=dataset('xls','Input\ExRate960231.xlsx');
+    Target_var_names={'USD_Market'};
+    Dum_var_name={'Hadafmandi' 'rohani'};
+    nd=20; % Periods to find the best models
+    %the first row is the transformations
+    FRT=1;
+    %%
+else % Fed Graph
+    isPersianDate=0;
+    % %---------------------Read Data from Excell file---------------------------
+    Data=dataset('xls','Input\fredgraph.xls');%,'sheet','Data');
+    Target_var_names={'Coal'	'Cop'	'Gold'	'WTI'	'UNRATE'	'FEDFUNDS'};%
+    Dum_var_name={};%{'D1','D2'}; periodical=Data.Date(1); % 4 for quarterly data and 12 for monthly and 1 for anual
+    nd=10; % Periods to find the best models
+    %the first row is the transformations
+    FRT=0;
 end
 for Tvarnameindx=1:length(Target_var_names)
     Target_var_name=Target_var_names{Tvarnameindx};
@@ -108,7 +136,7 @@ for Tvarnameindx=1:length(Target_var_names)
     %[Target_Level_X12]=deseasonal2(Target);
     Target_Level_X12=Target;
     Exp_Var_B=Exp_Var;
-     %[Exp_Var_B]=deseasonal2(Exp_Var);
+    %[Exp_Var_B]=deseasonal2(Exp_Var);
     Target_Historical=Target;
     
     %% Simulate for Model Selection
@@ -199,11 +227,11 @@ for Tvarnameindx=1:length(Target_var_names)
                 end
                 %----------------------------------------------------------------------
                 
-              %-------------------------------Neural Network------------------------------------
-              model(i,:,tt,Model_Count)= ANFIS_(Target_,Exp_Var_,horizon);      Desc_Model(i,tt,Model_Count)={['ANFIS, Trans:' Trans_mod{tt} ', Exo: All ']};   Model_Count=Model_Count+1;
-              model(i,:,tt,Model_Count)= ANN_(Target_,Exp_Var_,horizon);        Desc_Model(i,tt,Model_Count)={['ANN, Trans:' Trans_mod{tt} ', Exo: All ']};   Model_Count=Model_Count+1;
-              %model(i,:,tt,Model_Count)= kfold_(Target_,Exp_Var_,horizon);        Desc_Model(i,tt,Model_Count)={['Kfold, Trans:' Trans_mod{tt} ', Exo: All ']};   Model_Count=Model_Count+1;
-            
+                %-------------------------------Neural Network------------------------------------
+                %              model(i,:,tt,Model_Count)= ANFIS_(Target_,Exp_Var_,horizon);      Desc_Model(i,tt,Model_Count)={['ANFIS, Trans:' Trans_mod{tt} ', Exo: All ']};   Model_Count=Model_Count+1;
+%                model(i,:,tt,Model_Count)= ANN_(Target_,Exp_Var_,horizon);        Desc_Model(i,tt,Model_Count)={['ANN, Trans:' Trans_mod{tt} ', Exo: All ']};   Model_Count=Model_Count+1;
+                %model(i,:,tt,Model_Count)= kfold_(Target_,Exp_Var_,horizon);        Desc_Model(i,tt,Model_Count)={['Kfold, Trans:' Trans_mod{tt} ', Exo: All ']};   Model_Count=Model_Count+1;
+                
             end
             %     disp(i)
             tim=toc;
@@ -280,9 +308,9 @@ for Tvarnameindx=1:length(Target_var_names)
             end
             %----------------------------------------------------------------------
             
-              %-------------------------------Neural Network------------------------------------
-              Full_model(:,tt,Model_Count)= ANFIS_(Target_,Exp_Var_,horizon);      Fin_Desc_Model(tt,Model_Count)={['ANFIS, Trans:' Trans_mod{tt} ', Exo: All ']};   Model_Count=Model_Count+1;
-              Full_model(:,tt,Model_Count)= ANN_(Target_,Exp_Var_,horizon);      Fin_Desc_Model(tt,Model_Count)={['ANN, Trans:' Trans_mod{tt} ', Exo: All ']};   Model_Count=Model_Count+1;
+            %-------------------------------Neural Network------------------------------------
+            %              Full_model(:,tt,Model_Count)= ANFIS_(Target_,Exp_Var_,horizon);      Fin_Desc_Model(tt,Model_Count)={['ANFIS, Trans:' Trans_mod{tt} ', Exo: All ']};   Model_Count=Model_Count+1;
+%             Full_model(:,tt,Model_Count)= ANN_(Target_,Exp_Var_,horizon);      Fin_Desc_Model(tt,Model_Count)={['ANN, Trans:' Trans_mod{tt} ', Exo: All ']};   Model_Count=Model_Count+1;
             
         end
     end
@@ -354,7 +382,7 @@ for Tvarnameindx=1:length(Target_var_names)
         R=1;
         C=find(RMSFE1_Total==min_RMSFE);
     else
-    [R,C]=find(RMSFE1_Total==min_RMSFE);
+        [R,C]=find(RMSFE1_Total==min_RMSFE);
     end
     %[~, bestmodel0]=min(RMSFE1,[],2);
     
