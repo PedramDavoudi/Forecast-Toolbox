@@ -68,7 +68,7 @@ NsQ= dataset(datenum(getabstime(NsQ)),NsQ.IndexValue.Data,'varnames',{'Date','Ns
 CpiUs= Quandl.get('BLSI/CUSR0000SA0', 'authcode', 'RnDoxxE6yUUYF7xVVkEp', 'collapse' ,'monthly', 'start_date',SD,'end_date',ED);
 CpiUs=dataset(CpiUs.Data,datenum(getabstime(CpiUs)),'varnames',{'CPI','Date'});
 
-% Commodity index japan banks
+% Commodity index
 CMdi=Quandl.get('ODA/PALLFNF_INDEX', 'authcode', 'RnDoxxE6yUUYF7xVVkEp', 'collapse' ,'monthly', 'start_date',SD,'end_date',ED);
 CMdi=dataset(CMdi.Data,datenum(getabstime(CMdi)),'varnames',{'Commodity','Date'});
 
