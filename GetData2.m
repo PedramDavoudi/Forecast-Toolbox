@@ -55,10 +55,10 @@ Ind=Ind+1;
 Com(Ind)=Quandl.get('COM/WLD_IRAW_MATERIAL', 'authcode', 'RnDoxxE6yUUYF7xVVkEp', 'collapse' ,'monthly', 'start_date',SD,'end_date',ED);
 IndxBank(Ind)={'RawMaterials'};
 Ind=Ind+1;
-% Steel Index,(2005=100)
-Com(Ind)=Quandl.get('COM/WLD_ISTL_JP_INDX', 'authcode', 'RnDoxxE6yUUYF7xVVkEp', 'collapse' ,'monthly', 'start_date',SD,'end_date',ED);
-IndxBank(Ind)={'Steel'};
-Ind=Ind+1;
+% % Steel Index,(2005=100)
+% Com(Ind)=Quandl.get('COM/WLD_ISTL_JP_INDX', 'authcode', 'RnDoxxE6yUUYF7xVVkEp', 'collapse' ,'monthly', 'start_date',SD,'end_date',ED);
+% IndxBank(Ind)={'Steel'};
+% Ind=Ind+1;
 % Non-energy Index
 Com(Ind)=Quandl.get('COM/WLD_INONFUEL', 'authcode', 'RnDoxxE6yUUYF7xVVkEp', 'collapse' ,'monthly', 'start_date',SD,'end_date',ED);
 IndxBank(Ind)={'NonEnergy'};
@@ -110,25 +110,25 @@ IndxBank(Ind)={'Gold'};
 Ind=Ind+1;
 
 
-% Steel rebar,($/mt)
-Com(Ind)=Quandl.get('COM/WLD_STL_JP_REBAR', 'authcode', 'RnDoxxE6yUUYF7xVVkEp', 'collapse' ,'monthly', 'start_date',SD,'end_date',ED);
-IndxBank(Ind)={'rebar'};
-Ind=Ind+1;
+% % Steel rebar,($/mt)
+% Com(Ind)=Quandl.get('COM/WLD_STL_JP_REBAR', 'authcode', 'RnDoxxE6yUUYF7xVVkEp', 'collapse' ,'monthly', 'start_date',SD,'end_date',ED);
+% IndxBank(Ind)={'rebar'};
+% Ind=Ind+1;
 
-% Steel wire rod,($/mt)
-Com(Ind)=Quandl.get('COM/WLD_STL_JP_WIROD', 'authcode', 'RnDoxxE6yUUYF7xVVkEp', 'collapse' ,'monthly', 'start_date',SD,'end_date',ED);
-IndxBank(Ind)={'wirerod'};
-Ind=Ind+1;
+% % Steel wire rod,($/mt)
+% Com(Ind)=Quandl.get('COM/WLD_STL_JP_WIROD', 'authcode', 'RnDoxxE6yUUYF7xVVkEp', 'collapse' ,'monthly', 'start_date',SD,'end_date',ED);
+% IndxBank(Ind)={'wirerod'};
+% Ind=Ind+1;
 
-% Steel, hot rolled coilsheet,($/mt)
-Com(Ind)=Quandl.get('COM/WLD_STL_JP_HROLL', 'authcode', 'RnDoxxE6yUUYF7xVVkEp', 'collapse' ,'monthly', 'start_date',SD,'end_date',ED);
-IndxBank(Ind)={'hotRolled'};
-Ind=Ind+1;
-
-% Steel, cold rolled coilsheet,($/mt)
-Com(Ind)=Quandl.get('COM/WLD_STL_JP_CROLL', 'authcode', 'RnDoxxE6yUUYF7xVVkEp', 'collapse' ,'monthly', 'start_date',SD,'end_date',ED);
-IndxBank(Ind)={' coldRolled'};
-Ind=Ind+1;
+% % Steel, hot rolled coilsheet,($/mt)
+% Com(Ind)=Quandl.get('COM/WLD_STL_JP_HROLL', 'authcode', 'RnDoxxE6yUUYF7xVVkEp', 'collapse' ,'monthly', 'start_date',SD,'end_date',ED);
+% IndxBank(Ind)={'hotRolled'};
+% Ind=Ind+1;
+% 
+% % Steel, cold rolled coilsheet,($/mt)
+% Com(Ind)=Quandl.get('COM/WLD_STL_JP_CROLL', 'authcode', 'RnDoxxE6yUUYF7xVVkEp', 'collapse' ,'monthly', 'start_date',SD,'end_date',ED);
+% IndxBank(Ind)={' coldRolled'};
+% Ind=Ind+1;
 
 
 % Aluminium
@@ -136,10 +136,10 @@ Com(Ind)=Quandl.get('COM/WLD_ALUMINUM', 'authcode', 'RnDoxxE6yUUYF7xVVkEp', 'col
 IndxBank(Ind)={'Aluminium'};
 Ind=Ind+1;
 
-% Iron Ore 62% Fe CFR China,CME
-Com(Ind)=Quandl.get('COM/FE_TJN', 'authcode', 'RnDoxxE6yUUYF7xVVkEp', 'collapse' ,'monthly', 'start_date',SD,'end_date',ED);
-IndxBank(Ind)={'IronOre'};
-Ind=Ind+1;
+% % Iron Ore 62% Fe CFR China,CME
+% Com(Ind)=Quandl.get('COM/FE_TJN', 'authcode', 'RnDoxxE6yUUYF7xVVkEp', 'collapse' ,'monthly', 'start_date',SD,'end_date',ED);
+% IndxBank(Ind)={'IronOre'};
+% Ind=Ind+1;
 
 % Aluminium
 % Com(Ind)=Quandl.get('COM/WLD_ALUMINUM', 'authcode', 'RnDoxxE6yUUYF7xVVkEp', 'collapse' ,'monthly', 'start_date',SD,'end_date',ED);
