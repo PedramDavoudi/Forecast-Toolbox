@@ -10,7 +10,7 @@
 
 clear
 clc
-Irann=2;  % 1 Iran Quarterly data;2 CPI main group monthly ;3 comodities; 4 Wednesday
+Irann=3;  % 1 Iran Quarterly data;2 CPI main group monthly ;3 comodities; 4 Wednesday
 JustAr=0; % Just Single equation methods.
 %****************************
 onestep=NaN; % Idont know it
@@ -38,9 +38,12 @@ elseif Irann==2 % CPI Elements
     FRT=1;
 elseif  Irann==3% Commodities
     isPersianDate=0;
+    delete('Input\Mar.xlsx')
+    GetData2(0)
+    
     % %---------------------Read Data from Excell file---------------------------
     Data=dataset('xls','Input\Mar.xlsx');%,'sheet','Data');
-    Target_var_names={'Agriculture' 'Food' 'Energy' 'MetalsMinerals' 'RawMaterials' 'NonEnergy' 'NaturalGas' 'BaseMetals' 'Commodity' 'Metals' 'Coal' 'WTI' 'Brent' 'Copper' 'Gold' 'Aluminium'};
+    Target_var_names={'Agriculture' 'Energy' 'RawMaterials' 'NaturalGas' 'BaseMetals' 'Commodity' 'Metals' 'Coal' 'WTI' 'Brent' 'Copper' 'Gold' 'Aluminium'};
     Dum_var_name={};%{'D1','D2'}; periodical=Data.Date(1); % 4 for quarterly data and 12 for monthly and 1 for anual
     nd=10; % Periods to find the best models
     %the first row is the transformations

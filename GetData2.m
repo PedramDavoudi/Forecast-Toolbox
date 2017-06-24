@@ -1,3 +1,7 @@
+function GetData2(includedate)
+if ~exist('includedate','var')
+   includedate=1; 
+end
 % data = Quandl.get('NSE/OIL');
 %
 % %mydata = Quandl.get('NSE/OIL', 'start_date','yyyy-mm-dd','end_date','yyyy-mm-dd');
@@ -26,9 +30,6 @@
 %
 %     Quandl.search('crude oil');
 %%
-clear
-clc
-
 formatOut = 'yy.dd';
 SD='2009-01-1';
 ED=date;%'2017-12-31';
@@ -157,7 +158,9 @@ for i=1:Ind-1
         All=join(All,res,'Type','outer', 'MergeKeys',true);
     end
 end
+if includedate==1
 All.Date2=datestr(All.Date);
+end
 %{
 % Opec Oil Price
 oil=Quandl.get('OPEC/ORB', 'collapse' ,'monthly', 'start_date',SD,'end_date',ED);
