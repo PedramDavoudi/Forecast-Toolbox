@@ -110,6 +110,21 @@ Com(Ind)=Quandl.get('COM/AU_LPM', 'authcode', 'RnDoxxE6yUUYF7xVVkEp', 'collapse'
 IndxBank(Ind)={'Gold'};
 Ind=Ind+1;
 
+% EuroUsd
+Com(Ind)=Quandl.get('ECB/EURUSD', 'authcode', 'RnDoxxE6yUUYF7xVVkEp', 'collapse' ,'monthly', 'start_date',SD,'end_date',ED);
+IndxBank(Ind)={'EurUsd'};
+Ind=Ind+1;
+
+% Iron ore 62 % 
+Com(Ind)=Quandl.get('COM/FE_TJN', 'authcode', 'RnDoxxE6yUUYF7xVVkEp', 'collapse' ,'monthly', 'start_date',SD,'end_date',ED);
+IndxBank(Ind)={'IronOre62FEChina'};
+Ind=Ind+1;
+
+% Zinc
+Com(Ind)=Quandl.get('COM/WLD_ZINC', 'authcode', 'RnDoxxE6yUUYF7xVVkEp', 'collapse' ,'monthly', 'start_date',SD,'end_date',ED);
+IndxBank(Ind)={'Zinc'};
+Ind=Ind+1;
+
 
 % % Steel rebar,($/mt)
 % Com(Ind)=Quandl.get('COM/WLD_STL_JP_REBAR', 'authcode', 'RnDoxxE6yUUYF7xVVkEp', 'collapse' ,'monthly', 'start_date',SD,'end_date',ED);
